@@ -15,16 +15,23 @@ int main() {
     gpio_init(BTN_PIN_2);
     gpio_set_dir(BTN_PIN_2, GPIO_IN);
     gpio_pull_up(BTN_PIN_2);
+
     int cnt_1 = 0;
     int cnt_2 = 0;
 
     while (true) {
 
         if (!gpio_get(BTN_PIN)) {
+            while (!gpio_get(BTN_PIN)) {
+            };
+            sleep_ms(500);
             printf("Botao 1: %d\n", cnt_1++);
         }
 
         if (!gpio_get(BTN_PIN_2)) {
+            while (!gpio_get(BTN_PIN_2)) {
+            };
+            sleep_ms(500);
             printf("Botao 2: %d\n", cnt_2++);
         }
     }
